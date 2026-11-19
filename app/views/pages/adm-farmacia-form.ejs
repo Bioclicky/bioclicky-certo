@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <p><a href="/adm/farmacias">← Voltar para as farmácias</a></p>
+  <h1><%= modo === 'novo' ? 'Nova farmácia' : 'Editar farmácia' %></h1>
+  <% if (erro) { %><p class="erro" role="alert"><%= erro %></p><% } %>
+</section>
+
+<section class="secao">
+  <form class="adm-form" action="<%= modo === 'novo' ? '/adm/farmacias' : '/adm/farmacias/' + idFarmacia %>" method="POST" data-validar="farmacia" novalidate>
+    <fieldset>
+      <legend>Dados da farmácia</legend>
+
+      <label for="nome">Nome</label>
+      <input id="nome" name="nome" type="text" value="<%= valores.nome || '' %>" required maxlength="100" aria-describedby="erro-nome" <%- erros.nome ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-nome" aria-live="polite"><%= erros.nome || '' %></small>
+
+      <label for="endereco">Endereço (opcional)</label>
+      <input id="endereco" name="endereco" type="text" value="<%= valores.endereco || '' %>" maxlength="200" autocomplete="street-address" aria-describedby="erro-endereco" <%- erros.endereco ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-endereco" aria-live="polite"><%= erros.endereco || '' %></small>
+
+      <label for="logo">Endereço do logo (opcional)</label>
+      <p class="adm-nota">Salve o logo em <code>app/public/imagens/farmacias/</code> e escreva aqui, por exemplo, <code>/imagens/farmacias/logo.png</code>.</p>
+      <input id="logo" name="logo" type="text" value="<%= valores.logo || '' %>" maxlength="200" placeholder="/imagens/farmacias/logo.png" aria-describedby="erro-logo" <%- erros.logo ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-logo" aria-live="polite"><%= erros.logo || '' %></small>
+    </fieldset>
+
+    <footer class="adm-acoes">
+      <button class="botao botao-principal" type="submit">Salvar</button>
+      <a class="botao botao-contorno" href="/adm/farmacias">Cancelar</a>
+    </footer>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/validacao.js"></script>
+<%- include('../partials/fim') %>

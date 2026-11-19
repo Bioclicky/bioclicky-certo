@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <h1>Olá, <%= conta.nome %></h1>
+  <p>E-mail: <%= conta.email %></p>
+  <% if (usuario.tipo === 'adm') { %>
+  <a class="botao botao-principal" href="/adm">Painel do ADM</a>
+  <% } %>
+  <a class="botao botao-contorno" href="/logout">Sair da conta</a>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Medicamentos favoritos</h2>
+  <% if (favoritos.length === 0) { %>
+    <p class="vazio">Você ainda não favoritou nenhum medicamento.</p>
+  <% } else { %>
+  <ul class="grade-cards">
+    <% favoritos.forEach(function (r) { %>
+    <li>
+    <article class="card">
+      <h3><%= r.nome %></h3>
+      <p><%= r.menor ? 'A partir de R$ ' + r.menor.preco.toFixed(2).replace('.', ',') : 'Sem ofertas' %></p>
+      <a class="botao botao-contorno" href="/remedios/<%= r.id %>">Comparar</a>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+  <% } %>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Histórico de pesquisas</h2>
+  <% if (historico.length === 0) { %>
+    <p class="vazio">Nenhuma pesquisa registrada.</p>
+  <% } else { %>
+  <ul class="historico">
+    <% historico.forEach(function (h) { %>
+      <li><a href="/remedios?q=<%= encodeURIComponent(h) %>"><%= h %></a></li>
+    <% }); %>
+  </ul>
+  <form action="/historico/limpar" method="POST">
+    <button class="botao botao-contorno" type="submit">Limpar histórico</button>
+  </form>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/fim') %>

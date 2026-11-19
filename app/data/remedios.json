@@ -1,0 +1,394 @@
+[
+  {
+    "id": 1,
+    "nome": "Dipirona 500mg",
+    "laboratorio": "Laboratório Exemplo",
+    "categoria": "Analgésicos",
+    "descricao": "Analgésico e antitérmico. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 7.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 6.5
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 8.2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Paracetamol 750mg",
+    "laboratorio": "Laboratório Exemplo",
+    "categoria": "Analgésicos",
+    "descricao": "Analgésico e antitérmico. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 9.4
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 8.9
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Ibuprofeno 400mg",
+    "laboratorio": "Laboratório Modelo",
+    "categoria": "Anti-inflamatórios",
+    "descricao": "Anti-inflamatório não esteroide. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 14.7
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 13.9
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nome": "Omeprazol 20mg",
+    "laboratorio": "Laboratório Modelo",
+    "categoria": "Gastrointestinais",
+    "descricao": "Redutor de acidez gástrica. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 18.5
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 16.8
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "nome": "Loratadina 10mg",
+    "laboratorio": "Laboratório Teste",
+    "categoria": "Antialérgicos",
+    "descricao": "Antialérgico. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 11.2
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "nome": "Dorflex 36 comprimidos",
+    "laboratorio": "Laboratório Exemplo",
+    "categoria": "Analgésicos",
+    "descricao": "Analgésico e relaxante muscular. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 19.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 17.5
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 18.7
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "nome": "Neosaldina 30 drágeas",
+    "laboratorio": "Laboratório Modelo",
+    "categoria": "Analgésicos",
+    "descricao": "Analgésico para dores de cabeça. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 22.4
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 20.9
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "nome": "Diclofenaco 50mg",
+    "laboratorio": "Laboratório Teste",
+    "categoria": "Anti-inflamatórios",
+    "descricao": "Anti-inflamatório para dores e inflamações. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 12.3
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 10.8
+      },
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 13.5
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "nome": "Nimesulida 100mg",
+    "laboratorio": "Laboratório Modelo",
+    "categoria": "Anti-inflamatórios",
+    "descricao": "Anti-inflamatório e analgésico. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 15.2
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 14.1
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "nome": "Pantoprazol 40mg",
+    "laboratorio": "Laboratório Exemplo",
+    "categoria": "Gastrointestinais",
+    "descricao": "Protetor gástrico. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 24.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 21.7
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 23.5
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "nome": "Simeticona 40mg",
+    "laboratorio": "Laboratório Teste",
+    "categoria": "Gastrointestinais",
+    "descricao": "Alívio de gases intestinais. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 9.8
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 8.9
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "nome": "Desloratadina 5mg",
+    "laboratorio": "Laboratório Modelo",
+    "categoria": "Antialérgicos",
+    "descricao": "Antialérgico de uso diário. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 16.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 15.4
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "nome": "Cetirizina 10mg",
+    "laboratorio": "Laboratório Exemplo",
+    "categoria": "Antialérgicos",
+    "descricao": "Antialérgico para rinite e urticária. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 13.8
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 12.6
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 14.2
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "nome": "Losartana Potássica 50mg",
+    "laboratorio": "Laboratório Teste",
+    "categoria": "Coração e pressão",
+    "descricao": "Anti-hipertensivo de uso contínuo. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 11.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 9.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 10.5
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "nome": "Atenolol 50mg",
+    "laboratorio": "Laboratório Modelo",
+    "categoria": "Coração e pressão",
+    "descricao": "Anti-hipertensivo. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 8.7
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 7.9
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "nome": "Vitamina D3 2.000UI",
+    "laboratorio": "Laboratório Exemplo",
+    "categoria": "Vitaminas",
+    "descricao": "Suplemento de vitamina D. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 29.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 18.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 24.5
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "nome": "Vitamina C 1g efervescente",
+    "laboratorio": "Laboratório Teste",
+    "categoria": "Vitaminas",
+    "descricao": "Suplemento de vitamina C. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 17.5
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 15.9
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "nome": "Amoxicilina 500mg",
+    "laboratorio": "Laboratório Modelo",
+    "categoria": "Antibióticos",
+    "descricao": "Antibiótico. Venda somente com receita médica. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 32.0
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 28.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 30.4
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "nome": "Azitromicina 500mg",
+    "laboratorio": "Laboratório Exemplo",
+    "categoria": "Antibióticos",
+    "descricao": "Antibiótico. Venda somente com receita médica. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 26.5
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 24.9
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "nome": "Soro fisiológico 0,9% 500ml",
+    "laboratorio": "Laboratório Teste",
+    "categoria": "Primeiros socorros",
+    "descricao": "Solução para higiene e limpeza. Dado demonstrativo.",
+    "imagem": null,
+    "ofertas": [
+      {
+        "farmacia": "Farmácia Exemplo A",
+        "preco": 6.9
+      },
+      {
+        "farmacia": "Farmácia Exemplo B",
+        "preco": 5.8
+      },
+      {
+        "farmacia": "Farmácia Exemplo C",
+        "preco": 6.2
+      }
+    ]
+  }
+]

@@ -1,0 +1,53 @@
+/* auth.css - Login e cadastro */
+
+.auth-caixa {
+    max-width: 440px;
+    margin: 56px auto;
+    padding: 32px 24px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    animation: entrar 0.7s var(--curva) backwards;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    padding: 12px 14px;
+    font: inherit;
+    color: var(--texto);
+    background: var(--fundo);
+    border: 2px solid var(--borda);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--verde);
+    box-shadow: 0 0 0 4px var(--verde-claro);
+}
+
+.auth-form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+}
+
+.auth-form .botao {
+    margin-top: 12px;
+}

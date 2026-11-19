@@ -1,0 +1,65 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <p><a href="/adm/remedios">← Voltar para os remédios</a></p>
+  <h1><%= modo === 'novo' ? 'Novo remédio' : 'Editar remédio' %></h1>
+  <% if (erro) { %><p class="erro" role="alert"><%= erro %></p><% } %>
+</section>
+
+<section class="secao">
+  <form class="adm-form" action="<%= modo === 'novo' ? '/adm/remedios' : '/adm/remedios/' + idRemedio %>" method="POST" data-validar="remedio" novalidate>
+    <fieldset>
+      <legend>Dados do remédio</legend>
+
+      <label for="nome">Nome (ex: Dipirona 500mg)</label>
+      <input id="nome" name="nome" type="text" value="<%= valores.nome || '' %>" required maxlength="100" aria-describedby="erro-nome" <%- erros.nome ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-nome" aria-live="polite"><%= erros.nome || '' %></small>
+
+      <label for="laboratorio">Laboratório</label>
+      <input id="laboratorio" name="laboratorio" type="text" value="<%= valores.laboratorio || '' %>" required maxlength="100" aria-describedby="erro-laboratorio" <%- erros.laboratorio ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-laboratorio" aria-live="polite"><%= erros.laboratorio || '' %></small>
+
+      <label for="categoria">Categoria</label>
+      <input id="categoria" name="categoria" type="text" list="lista-categorias" value="<%= valores.categoria || '' %>" required maxlength="50" aria-describedby="erro-categoria" <%- erros.categoria ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-categoria" aria-live="polite"><%= erros.categoria || '' %></small>
+      <datalist id="lista-categorias">
+        <% categorias.forEach(function (c) { %>
+        <option value="<%= c %>"></option>
+        <% }); %>
+      </datalist>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="descricao" rows="3" maxlength="500" aria-describedby="erro-descricao" <%- erros.descricao ? 'aria-invalid="true"' : '' %>><%= valores.descricao || '' %></textarea>
+      <small class="campo-erro" id="erro-descricao" aria-live="polite"><%= erros.descricao || '' %></small>
+
+      <label for="imagem">Endereço da imagem (opcional)</label>
+      <p class="adm-nota">Salve a foto em <code>app/public/imagens/remedios/</code> e escreva aqui, por exemplo, <code>/imagens/remedios/dipirona.png</code>.</p>
+      <input id="imagem" name="imagem" type="text" value="<%= valores.imagem || '' %>" maxlength="200" placeholder="/imagens/remedios/dipirona.png" aria-describedby="erro-imagem" <%- erros.imagem ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-imagem" aria-live="polite"><%= erros.imagem || '' %></small>
+    </fieldset>
+
+    <fieldset>
+      <legend>Preços por farmácia</legend>
+      <p class="adm-nota">Deixe em branco se a farmácia não tem esse remédio.</p>
+      <% if (erros.preco) { %><small class="campo-erro" role="alert"><%= erros.preco %></small><% } %>
+      <% if (farmacias.length === 0) { %>
+        <p class="vazio">Cadastre uma farmácia antes de colocar preços.</p>
+      <% } %>
+      <% farmacias.forEach(function (f) { %>
+      <label for="preco_<%= f.id %>"><%= f.nome %> (R$)</label>
+      <input id="preco_<%= f.id %>" name="precos[<%= f.id %>]" type="text" inputmode="decimal" data-preco maxlength="9" value="<%= (valores.precos && valores.precos[f.id]) || '' %>" placeholder="0,00" aria-describedby="erro-preco_<%= f.id %>" <%- erros['preco_' + f.id] ? 'aria-invalid="true"' : '' %>>
+      <small class="campo-erro" id="erro-preco_<%= f.id %>" aria-live="polite"><%= erros['preco_' + f.id] || '' %></small>
+      <% }); %>
+    </fieldset>
+
+    <footer class="adm-acoes">
+      <button class="botao botao-principal" type="submit">Salvar</button>
+      <a class="botao botao-contorno" href="/adm/remedios">Cancelar</a>
+    </footer>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/validacao.js"></script>
+<%- include('../partials/fim') %>

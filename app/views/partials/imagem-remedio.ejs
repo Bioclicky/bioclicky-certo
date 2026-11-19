@@ -1,0 +1,11 @@
+<%# Espaço da imagem de um remédio. Usado na página inicial, na lista e na comparação.
+    Se o remédio tem "imagem" no JSON, mostra a foto; se não tem, mostra um "+" no lugar.
+    Para colocar a foto: salve o arquivo em app/public/imagens/remedios/ e preencha o campo
+    "Endereço da imagem" no painel do ADM (ex: /imagens/remedios/dipirona.png). %>
+<figure class="remedio-imagem">
+  <% if (r.imagem) { %>
+    <img src="<%= r.imagem %>" alt="Embalagem de <%= r.nome %>" loading="lazy">
+  <% } else { %>
+    <span class="remedio-sem-imagem" aria-hidden="true">+</span>
+  <% } %>
+</figure>

@@ -1,0 +1,101 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="hero">
+  <span class="hero-blob hero-blob-1" aria-hidden="true"></span>
+  <span class="hero-blob hero-blob-2" aria-hidden="true"></span>
+
+  <article class="hero-texto-caixa">
+    <p class="eyebrow">Compare. Economize. Cuide-se.</p>
+    <h1 class="hero-titulo">O melhor preço para o seu medicamento, <span class="destaque">em poucos cliques.</span></h1>
+    <p class="hero-texto">Compare preços entre farmácias e encontre a melhor opção em poucos segundos.</p>
+
+    <form class="busca" action="/remedios" method="GET" role="search">
+      <label for="busca-home" class="sr-only">Nome do medicamento</label>
+      <input id="busca-home" class="busca-campo" type="search" name="q" placeholder="Pesquise um medicamento" required>
+      <button class="botao botao-principal" type="submit">Buscar preços</button>
+    </form>
+
+    <ul class="hero-selos">
+      <li>Comparação transparente</li>
+      <li>Sem vender medicamentos</li>
+      <li>Gratuito</li>
+    </ul>
+  </article>
+
+  <aside class="hero-visual" aria-label="Exemplo de comparação">
+    <span class="hero-pilula" aria-hidden="true">+</span>
+    <p class="hero-flutuante hero-flutuante-1">Compare ofertas lado a lado</p>
+    <p class="hero-flutuante hero-flutuante-2">Menor preço em destaque</p>
+  </aside>
+</section>
+
+<section class="secao revelar">
+  <header class="secao-cabecalho">
+    <hgroup>
+      <p class="eyebrow">Escolhas inteligentes</p>
+      <h2 class="secao-titulo">Medicamentos em destaque</h2>
+    </hgroup>
+    <a class="link-ver" href="/remedios">Ver todos →</a>
+  </header>
+  <p class="aviso-demo">Dados demonstrativos para fins de protótipo.</p>
+
+  <ul class="grade-remedios">
+    <% destaques.forEach(function (r) { %>
+    <li>
+    <article class="remedio-card revelar">
+      <%- include('../partials/imagem-remedio', { r: r }) %>
+      <p class="remedio-categoria"><%= r.categoria %></p>
+      <h3 class="remedio-nome"><%= r.nome %></h3>
+      <p class="remedio-lab"><%= r.laboratorio %></p>
+      <% if (r.menor) { %>
+        <p class="remedio-farmacia">a partir de</p>
+        <p class="remedio-preco">R$ <%= r.menor.preco.toFixed(2).replace('.', ',') %></p>
+      <% } %>
+      <footer class="remedio-acoes">
+        <a class="botao botao-principal" href="/remedios/<%= r.id %>">Comparar preços</a>
+      </footer>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+</section>
+
+<section class="secao revelar">
+  <p class="eyebrow">Encontre mais rápido</p>
+  <h2 class="secao-titulo">Explore por categoria</h2>
+  <ul class="grade-categorias">
+    <% categorias.forEach(function (c) { %>
+    <li>
+      <a class="categoria-tile revelar" href="/remedios?categoria=<%= encodeURIComponent(c.nome) %>">
+        <strong><%= c.nome %></strong>
+        <span><%= c.total %> medicamento(s)</span>
+      </a>
+    </li>
+    <% }); %>
+  </ul>
+</section>
+
+<section class="faixa-escura revelar">
+  <article class="faixa-conteudo">
+    <p class="eyebrow">Sua saúde, suas escolhas</p>
+    <h2 class="faixa-titulo">Economizar também é uma forma de cuidado.</h2>
+    <p>O BioClicky transforma dados de preços em decisões simples e transparentes.</p>
+    <a class="botao botao-principal" href="/sobre">Entenda como funciona</a>
+  </article>
+  <ol class="passos">
+    <li class="passo revelar"><span class="passo-numero">01</span><h3>Compare sem complicação</h3><p>Veja preços de diferentes farmácias em uma única tela.</p></li>
+    <li class="passo revelar"><span class="passo-numero">02</span><h3>Escolha o menor preço</h3><p>A oferta mais barata aparece em destaque.</p></li>
+    <li class="passo revelar"><span class="passo-numero">03</span><h3>Decida com confiança</h3><p>Informações claras e sem ofertas escondidas.</p></li>
+  </ol>
+</section>
+
+<section class="cta revelar">
+  <p class="eyebrow">Comece agora</p>
+  <h2 class="secao-titulo">Seu medicamento pode custar menos.</h2>
+  <p>Pesquise, compare e encontre a melhor opção.</p>
+  <a class="botao botao-principal" href="/remedios">Comparar preços</a>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/fim') %>

@@ -1,0 +1,201 @@
+/* ============================================================
+   remedios.css - Página de remédios e de comparação de preços
+   ============================================================ */
+
+/* ---------- Filtros por categoria ---------- */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0 8px;
+}
+
+.filtro {
+    padding: 8px 16px;
+    border: 1px solid var(--borda);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto) !important;
+    transition: transform 0.25s var(--curva), background 0.25s ease, border-color 0.25s ease;
+}
+
+.filtro:hover,
+.filtro.ativo {
+    background: var(--verde-claro);
+    border-color: var(--verde);
+    transform: translateY(-2px);
+}
+
+.contagem {
+    color: var(--texto-secundario);
+}
+
+/* ---------- Cards de medicamentos ---------- */
+.grade-remedios {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.remedio-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    transition: transform 0.35s var(--curva), box-shadow 0.35s ease, border-color 0.3s ease;
+    animation: entrar 0.6s var(--curva) backwards;
+}
+
+.remedio-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--verde);
+    box-shadow: var(--sombra-forte);
+}
+
+.remedio-card:hover .remedio-imagem {
+    transform: scale(1.03);
+}
+
+.remedio-imagem {
+    display: grid;
+    place-items: center;
+    height: 140px;
+    margin: 0 0 16px;
+    border-radius: 14px;
+    background: var(--verde-claro);
+    transition: transform 0.4s var(--curva);
+}
+
+.remedio-imagem img {
+    max-height: 120px;
+    max-width: 100%;
+}
+
+.remedio-sem-imagem {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--verde);
+}
+
+.remedio-categoria {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--verde);
+    text-transform: uppercase;
+}
+
+.remedio-nome {
+    font-size: 1.2rem;
+    margin: 4px 0;
+}
+
+.remedio-lab,
+.remedio-descricao,
+.remedio-ofertas,
+.remedio-farmacia {
+    margin: 0 0 6px;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+.remedio-preco {
+    margin: 8px 0 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.remedio-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+/* ---------- Página de comparação ---------- */
+.lista-ofertas {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.oferta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    transition: transform 0.3s var(--curva), box-shadow 0.3s ease;
+    animation: entrar 0.5s var(--curva) backwards;
+}
+
+.oferta:hover {
+    transform: translateX(6px);
+    box-shadow: var(--sombra);
+}
+
+.oferta-melhor {
+    border-color: var(--verde);
+    background: var(--verde-claro);
+}
+
+.oferta-farmacia {
+    flex: 1;
+    font-weight: 600;
+}
+
+.oferta-preco {
+    font-size: 1.25rem;
+}
+
+.selo {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--gradiente);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 768px) {
+    .grade-remedios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---------- Computador ---------- */
+@media (min-width: 1025px) {
+    .grade-remedios {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ---------- Aviso de filtro por farmácia ---------- */
+.filtro-farmacia {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0 0;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--verde-claro);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Imagem do remédio no topo da página de comparação: não fica larga demais no computador */
+.pagina-topo .remedio-imagem {
+    max-width: 280px;
+}

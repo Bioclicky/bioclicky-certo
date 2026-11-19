@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <p><a href="/adm">← Voltar para o painel</a></p>
+  <h1>Gerenciar remédios</h1>
+  <a class="botao botao-principal" href="/adm/remedios/novo">+ Novo remédio</a>
+  <% if (aviso) { %><p class="sucesso" role="status"><%= aviso %></p><% } %>
+</section>
+
+<section class="secao">
+  <% if (remedios.length === 0) { %>
+    <p class="vazio">Nenhum remédio cadastrado.</p>
+  <% } else { %>
+  <ul class="grade-cards">
+    <% remedios.forEach(function (r) { %>
+    <li>
+    <article class="card">
+      <p class="adm-etiqueta"><%= r.categoria %></p>
+      <h2><%= r.nome %></h2>
+      <p><%= r.laboratorio %></p>
+      <p><%= r.ofertas.length %> oferta(s)<%= r.menor ? ' · menor preço R$ ' + r.menor.preco.toFixed(2).replace('.', ',') : '' %></p>
+      <footer class="adm-acoes">
+        <a class="botao botao-contorno" href="/adm/remedios/<%= r.id %>/editar">Editar</a>
+        <form action="/adm/remedios/<%= r.id %>/excluir" method="POST">
+          <button class="botao botao-perigo" type="submit" data-confirmar="Excluir <%= r.nome %>?">Excluir</button>
+        </form>
+      </footer>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/adm.js"></script>
+<%- include('../partials/fim') %>

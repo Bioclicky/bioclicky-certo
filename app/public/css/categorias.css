@@ -1,0 +1,6 @@
+/* categorias.css - Página de categorias */
+
+.card-categoria h2 {
+    font-size: 1.15rem;
+    color: var(--verde);
+}

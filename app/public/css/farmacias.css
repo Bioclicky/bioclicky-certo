@@ -1,0 +1,26 @@
+/* farmacias.css - Página de farmácias (usa os cards compartilhados do home.css) */
+
+.card h2 {
+    font-size: 1.15rem;
+}
+
+/* ---------- Espaço do logo da farmácia (mostra "+" até o ADM informar o logo) ---------- */
+.farmacia-logo {
+    display: grid;
+    place-items: center;
+    height: 90px;
+    margin: 0 0 16px;
+    border-radius: 14px;
+    background: var(--verde-claro);
+}
+
+.farmacia-logo img {
+    max-width: 80%;
+    max-height: 64px;
+}
+
+.farmacia-sem-logo {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--verde);
+}

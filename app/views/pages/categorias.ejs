@@ -1,0 +1,24 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <h1>Categorias</h1>
+  <p>Explore os medicamentos organizados por tipo.</p>
+</section>
+
+<section class="secao">
+  <ul class="grade-cards">
+    <% categorias.forEach(function (c) { %>
+    <li>
+    <article class="card card-categoria">
+      <h2><%= c.nome %></h2>
+      <p><%= c.total %> medicamento(s)</p>
+      <a class="botao botao-contorno" href="/remedios?categoria=<%= encodeURIComponent(c.nome) %>">Ver medicamentos</a>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/fim') %>

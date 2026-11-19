@@ -1,0 +1,96 @@
+<%# ============================================================
+    navegacao.ejs - Navegação fixa na parte de baixo da tela (mobile first)
+    + painel de acessibilidade (elemento dialog, sem usar divisões genéricas).
+    ============================================================ %>
+<nav class="nav-inferior" aria-label="Navegação principal">
+  <ul>
+    <li>
+      <a href="/" class="<%= pagina === 'home' ? 'ativo' : '' %>" <%- pagina === 'home' ? 'aria-current="page"' : '' %>>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>
+        <span>Início</span>
+      </a>
+    </li>
+    <li>
+      <a href="/remedios" class="<%= pagina === 'remedios' ? 'ativo' : '' %>" <%- pagina === 'remedios' ? 'aria-current="page"' : '' %>>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <span>Buscar</span>
+      </a>
+    </li>
+    <li>
+      <a href="/categorias" class="<%= pagina === 'categorias' ? 'ativo' : '' %>" <%- pagina === 'categorias' ? 'aria-current="page"' : '' %>>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg>
+        <span>Categorias</span>
+      </a>
+    </li>
+    <li>
+      <a href="/farmacias" class="<%= pagina === 'farmacias' ? 'ativo' : '' %>" <%- pagina === 'farmacias' ? 'aria-current="page"' : '' %>>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 0 0-14 0c0 5.4 7 11 7 11z"></path><path d="M12 7.5v5M9.5 10h5"></path></svg>
+        <span>Farmácias</span>
+      </a>
+    </li>
+    <li>
+      <% const paginaConta = ['dashboard', 'login', 'cadastro', 'adm'].includes(pagina); %>
+      <a href="<%= usuario ? '/dashboard' : '/login' %>" class="<%= paginaConta ? 'ativo' : '' %>" <%- paginaConta ? 'aria-current="page"' : '' %>>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"></path></svg>
+        <span><%= usuario ? 'Conta' : 'Entrar' %></span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Painel de acessibilidade. <dialog> já traz foco preso, tecla Esc e fundo escurecido. -->
+<dialog class="acess-painel" id="painelAcess" aria-labelledby="acessTitulo">
+  <form method="dialog" class="acess-form">
+    <header class="acess-topo">
+      <h2 id="acessTitulo">Acessibilidade</h2>
+      <button class="icone-botao" type="submit" aria-label="Fechar painel de acessibilidade">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </header>
+
+    <fieldset class="acess-grupo">
+      <legend>Tamanho do texto <output id="acessFonteValor">100%</output></legend>
+      <ul class="acess-grade">
+        <li><button class="acess-opcao" type="button" data-acess-fonte="menos">A− Diminuir</button></li>
+        <li><button class="acess-opcao" type="button" data-acess-fonte="mais">A+ Aumentar</button></li>
+      </ul>
+    </fieldset>
+
+    <fieldset class="acess-grupo">
+      <legend>Visual</legend>
+      <ul class="acess-grade">
+        <li><button class="acess-opcao" type="button" data-acess="contraste" aria-pressed="false">Alto contraste</button></li>
+        <li><button class="acess-opcao" type="button" data-acess="links" aria-pressed="false">Destacar links</button></li>
+        <li><button class="acess-opcao" type="button" data-acess="dislexia" aria-pressed="false">Fonte para dislexia</button></li>
+        <li><button class="acess-opcao" type="button" data-acess="espacamento" aria-pressed="false">Espaçamento do texto</button></li>
+        <li><button class="acess-opcao" type="button" data-acess="cursor" aria-pressed="false">Cursor grande</button></li>
+        <li><button class="acess-opcao" type="button" data-acess="animacoes" aria-pressed="false">Pausar animações</button></li>
+      </ul>
+    </fieldset>
+
+    <fieldset class="acess-grupo">
+      <legend>Assistência</legend>
+      <ul class="acess-grade">
+        <li><button class="acess-opcao" type="button" data-acess="libras" aria-pressed="false">Libras (VLibras)</button></li>
+        <li><button class="acess-opcao" type="button" id="acessLer" aria-pressed="false">Ler a página em voz alta</button></li>
+      </ul>
+      <p class="acess-nota">A tradução em Libras usa o VLibras, ferramenta oficial do Governo Federal, e precisa de internet.</p>
+    </fieldset>
+
+    <section class="acess-grupo" aria-labelledby="acessAtalhos">
+      <h3 id="acessAtalhos">Atalhos de teclado</h3>
+      <dl class="acess-atalhos">
+        <dt>Alt + A</dt><dd>Abrir este painel</dd>
+        <dt>Alt + C</dt><dd>Alto contraste</dd>
+        <dt>Alt + L</dt><dd>Ler a página</dd>
+        <dt>Alt + 1</dt><dd>Ir para o conteúdo</dd>
+      </dl>
+    </section>
+
+    <footer class="acess-rodape">
+      <button class="botao botao-contorno" type="button" id="acessReset">Restaurar padrão</button>
+      <button class="botao botao-principal" type="submit">Concluir</button>
+    </footer>
+  </form>
+</dialog>
+<p class="sr-only" id="acessStatus" role="status" aria-live="polite"></p>

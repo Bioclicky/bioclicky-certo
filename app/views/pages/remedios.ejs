@@ -1,0 +1,70 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <h1>Remédios</h1>
+  <p class="aviso-demo">Dados demonstrativos para fins de protótipo.</p>
+
+  <form class="busca" action="/remedios" method="GET" role="search">
+    <label for="busca-remedios" class="sr-only">Buscar por nome ou laboratório</label>
+    <input id="busca-remedios" class="busca-campo" type="search" name="q" value="<%= q %>" placeholder="Nome ou laboratório">
+    <% if (categoria) { %><input type="hidden" name="categoria" value="<%= categoria %>"><% } %>
+    <% if (farmacia) { %><input type="hidden" name="farmacia" value="<%= farmacia %>"><% } %>
+    <button class="botao botao-principal" type="submit">Buscar</button>
+  </form>
+
+  <nav class="filtros" aria-label="Filtrar por categoria">
+    <a class="filtro <%= !categoria ? 'ativo' : '' %>" href="/remedios<%= q ? '?q=' + encodeURIComponent(q) : '' %>">Todas</a>
+    <% categorias.forEach(function (c) { %>
+      <a class="filtro <%= categoria === c ? 'ativo' : '' %>"
+         href="/remedios?<%= q ? 'q=' + encodeURIComponent(q) + '&' : '' %>categoria=<%= encodeURIComponent(c) %>"><%= c %></a>
+    <% }); %>
+  </nav>
+
+  <% if (farmacia) { %>
+  <p class="filtro-farmacia">Mostrando ofertas de <%= farmacia %> · <a href="/remedios">Limpar</a></p>
+  <% } %>
+
+  <p class="contagem" aria-live="polite"><%= remedios.length %> resultado(s) encontrado(s)</p>
+</section>
+
+<section class="secao">
+  <% if (remedios.length === 0) { %>
+    <p class="vazio">Nenhum medicamento encontrado. Tente outro nome ou remova os filtros.</p>
+  <% } else { %>
+  <ul class="grade-remedios">
+    <% remedios.forEach(function (r) { %>
+    <li>
+    <article class="remedio-card">
+      <%- include('../partials/imagem-remedio', { r: r }) %>
+      <p class="remedio-categoria"><%= r.categoria %></p>
+      <h2 class="remedio-nome"><%= r.nome %></h2>
+      <p class="remedio-lab"><%= r.laboratorio %></p>
+      <p class="remedio-descricao"><%= r.descricao %></p>
+      <p class="remedio-ofertas"><%= r.ofertas.length %> oferta(s)</p>
+      <% if (r.menor) { %>
+        <p class="remedio-preco">R$ <%= r.menor.preco.toFixed(2).replace('.', ',') %></p>
+        <p class="remedio-farmacia">em <%= r.menor.farmacia %></p>
+      <% } else { %>
+        <p class="remedio-farmacia">Sem ofertas no momento</p>
+      <% } %>
+
+      <footer class="remedio-acoes">
+        <a class="botao botao-principal" href="/remedios/<%= r.id %>">Comparar opções</a>
+        <% if (usuario) { %>
+        <form action="/favoritos/<%= r.id %>" method="POST">
+          <button class="botao botao-contorno" type="submit">
+            <%= favoritos.includes(r.id) ? 'Remover favorito' : 'Favoritar' %>
+          </button>
+        </form>
+        <% } %>
+      </footer>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/fim') %>

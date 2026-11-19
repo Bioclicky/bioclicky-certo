@@ -1,0 +1,35 @@
+/* sobre.css - Página Sobre */
+
+.texto-sobre {
+    max-width: 760px;
+}
+
+.texto-sobre article {
+    margin-bottom: 24px;
+}
+
+.aviso {
+    padding: 20px;
+    border-left: 4px solid var(--verde);
+    border-radius: 8px;
+    background: var(--verde-claro);
+}
+
+/* Nomes da equipe (aparecem em "Quem fez o BioClicky") */
+.equipe-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.equipe-lista li {
+    padding: 4px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 999px;
+    background: var(--superficie);
+    color: var(--texto-secundario);
+    font-size: 0.88rem;
+}

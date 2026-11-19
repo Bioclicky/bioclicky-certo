@@ -1,0 +1,166 @@
+/* ============================================================
+   navegacao.css - Navegação principal (embaixo no celular/tablet, no topo no computador)
+   Mobile first: barra encostada embaixo no celular e no tablet;
+   no computador (1025px ou mais) ela vai para o topo.
+   ============================================================ */
+
+/* ---------- Barra inferior (base: celular) ---------- */
+.nav-inferior {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: var(--vidro);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--borda);
+    box-shadow: 0 -8px 28px rgba(15, 23, 42, 0.1);
+    animation: subir 0.6s var(--curva) backwards;
+}
+
+:root[data-tema="escuro"] .nav-inferior {
+    box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.45);
+}
+
+.nav-inferior ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-inferior a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 56px;
+    padding: 6px 2px;
+    border-radius: 16px;
+    color: var(--texto-secundario);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.25s ease, background 0.25s ease, transform 0.3s var(--curva);
+}
+
+.nav-inferior a span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav-inferior svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.35s var(--curva);
+}
+
+.nav-inferior a:hover {
+    color: var(--verde-escuro);
+    background: var(--verde-claro);
+}
+
+.nav-inferior a:hover svg {
+    transform: translateY(-3px);
+}
+
+.nav-inferior a:active {
+    transform: scale(0.92);
+}
+
+/* Página atual: cor, fundo e uma barrinha no topo (não depende só da cor) */
+.nav-inferior a.ativo {
+    color: var(--verde-escuro);
+    background: var(--verde-claro);
+}
+
+.nav-inferior a.ativo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 3px;
+    border-radius: 0 0 4px 4px;
+    background: var(--verde);
+}
+
+:root[data-tema="escuro"] .nav-inferior a.ativo,
+:root[data-tema="escuro"] .nav-inferior a:hover {
+    color: var(--verde);
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 768px) {
+    .nav-inferior a {
+        flex-direction: row;
+        gap: 8px;
+        font-size: 0.9rem;
+    }
+
+    .nav-inferior ul {
+        max-width: 720px;
+    }
+}
+
+/* ---------- Computador: navegação no TOPO, na mesma linha do cabeçalho ----------
+   O menu continua sendo o mesmo <nav>, mas aqui ele sobe para a altura do cabeçalho
+   (76px), centralizado entre o logo e os botões. Sem ícones: só os textos dos links. */
+@media (min-width: 1025px) {
+    .nav-inferior {
+        top: 0;
+        bottom: auto;
+        left: 50%;
+        right: auto;
+        display: flex;
+        align-items: center;
+        height: 76px;
+        padding: 0;
+        background: none;
+        border: 0;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        transform: translateX(-50%);
+        animation: none;
+    }
+
+    :root[data-tema="escuro"] .nav-inferior {
+        box-shadow: none;
+    }
+
+    .nav-inferior ul {
+        display: flex;
+        gap: 4px;
+        max-width: none;
+    }
+
+    .nav-inferior a {
+        min-height: 44px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+    }
+
+    .nav-inferior svg {
+        display: none;
+    }
+
+    .nav-inferior a:hover svg {
+        transform: none;
+    }
+
+    /* A barrinha da página atual só existe no celular/tablet; aqui o fundo verde já destaca */
+    .nav-inferior a.ativo::before {
+        display: none;
+    }
+}

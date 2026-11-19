@@ -1,0 +1,26 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="auth-caixa">
+  <h1>Entrar</h1>
+  <% if (erro) { %><p class="erro" role="alert"><%= erro %></p><% } %>
+  <form action="/login" method="POST" class="auth-form" data-validar="login" novalidate>
+    <label for="email">E-mail</label>
+    <input id="email" name="email" type="email" value="<%= valores.email || '' %>" required maxlength="120" autocomplete="email" aria-describedby="erro-email" <%- erros.email ? 'aria-invalid="true"' : '' %>>
+    <small class="campo-erro" id="erro-email" aria-live="polite"><%= erros.email || '' %></small>
+
+    <label for="senha">Senha</label>
+    <input id="senha" name="senha" type="password" required maxlength="72" autocomplete="current-password" aria-describedby="erro-senha" <%- erros.senha ? 'aria-invalid="true"' : '' %>>
+    <small class="campo-erro" id="erro-senha" aria-live="polite"><%= erros.senha || '' %></small>
+    <label class="checkbox"><input type="checkbox" data-mostrar-senha="senha"> Mostrar senha</label>
+
+    <button class="botao botao-principal" type="submit">Entrar</button>
+  </form>
+  <p>Não tem conta? <a href="/cadastro">Cadastre-se</a></p>
+  <p><a href="/">← Voltar para o início</a></p>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/auth.js"></script>
+<script src="/js/validacao.js"></script>
+<%- include('../partials/fim') %>

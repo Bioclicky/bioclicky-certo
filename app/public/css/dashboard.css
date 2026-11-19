@@ -1,0 +1,18 @@
+/* dashboard.css - Área do usuário */
+
+.historico {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+}
+
+.historico a {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 999px;
+    text-decoration: none;
+}

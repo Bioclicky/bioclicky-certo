@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <p><a href="/adm">← Voltar para o painel</a></p>
+  <h1>Gerenciar usuários</h1>
+  <% if (aviso) { %><p class="sucesso" role="status"><%= aviso %></p><% } %>
+  <% if (erro) { %><p class="erro" role="alert"><%= erro %></p><% } %>
+</section>
+
+<section class="secao">
+  <ul class="grade-cards">
+    <% usuarios.forEach(function (u) { %>
+    <li>
+    <article class="card">
+      <p class="adm-etiqueta"><%= u.tipo === 'adm' ? 'ADM' : 'Usuário' %></p>
+      <h2><%= u.nome %></h2>
+      <p><%= u.email %></p>
+      <p><%= u.favoritos.length %> favorito(s) · <%= u.historico.length %> pesquisa(s)</p>
+      <% if (u.id !== usuario.id) { %>
+      <footer class="adm-acoes">
+        <form action="/adm/usuarios/<%= u.id %>/tipo" method="POST">
+          <button class="botao botao-contorno" type="submit"><%= u.tipo === 'adm' ? 'Tornar usuário' : 'Tornar ADM' %></button>
+        </form>
+        <form action="/adm/usuarios/<%= u.id %>/excluir" method="POST">
+          <button class="botao botao-perigo" type="submit" data-confirmar="Excluir o usuário <%= u.nome %>?">Excluir</button>
+        </form>
+      </footer>
+      <% } else { %>
+      <p>Esta é a sua conta.</p>
+      <% } %>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/adm.js"></script>
+<%- include('../partials/fim') %>

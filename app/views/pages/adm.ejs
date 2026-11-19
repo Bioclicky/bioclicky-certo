@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <h1>Painel do ADM</h1>
+  <p>Olá, <%= usuario.nome %>. Aqui você cuida dos dados do BioClicky.</p>
+  <a class="botao botao-contorno" href="/dashboard">Ver minha conta</a>
+</section>
+
+<section class="secao">
+  <h2 class="secao-titulo">Resumo</h2>
+  <ul class="grade-cards">
+    <li>
+      <article class="card">
+        <h3>Remédios</h3>
+        <p class="adm-numero"><%= totais.remedios %></p>
+        <a class="botao botao-principal" href="/adm/remedios">Gerenciar remédios</a>
+      </article>
+    </li>
+    <li>
+      <article class="card">
+        <h3>Farmácias</h3>
+        <p class="adm-numero"><%= totais.farmacias %></p>
+        <a class="botao botao-principal" href="/adm/farmacias">Gerenciar farmácias</a>
+      </article>
+    </li>
+    <li>
+      <article class="card">
+        <h3>Usuários</h3>
+        <p class="adm-numero"><%= totais.usuarios %></p>
+        <a class="botao botao-principal" href="/adm/usuarios">Gerenciar usuários</a>
+      </article>
+    </li>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/fim') %>

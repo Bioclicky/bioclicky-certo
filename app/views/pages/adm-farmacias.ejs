@@ -1,0 +1,37 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <p><a href="/adm">← Voltar para o painel</a></p>
+  <h1>Gerenciar farmácias</h1>
+  <a class="botao botao-principal" href="/adm/farmacias/novo">+ Nova farmácia</a>
+  <% if (aviso) { %><p class="sucesso" role="status"><%= aviso %></p><% } %>
+</section>
+
+<section class="secao">
+  <% if (farmacias.length === 0) { %>
+    <p class="vazio">Nenhuma farmácia cadastrada.</p>
+  <% } else { %>
+  <ul class="grade-cards">
+    <% farmacias.forEach(function (f) { %>
+    <li>
+    <article class="card card-farmacia">
+      <h2><%= f.nome %></h2>
+      <p><%= f.endereco ? f.endereco : 'Endereço não informado' %></p>
+      <p><%= f.totalOfertas %> oferta(s) na plataforma</p>
+      <footer class="adm-acoes">
+        <a class="botao botao-contorno" href="/adm/farmacias/<%= f.id %>/editar">Editar</a>
+        <form action="/adm/farmacias/<%= f.id %>/excluir" method="POST">
+          <button class="botao botao-perigo" type="submit" data-confirmar="Excluir <%= f.nome %>? As ofertas dela também serão apagadas.">Excluir</button>
+        </form>
+      </footer>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/adm.js"></script>
+<%- include('../partials/fim') %>

@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="auth-caixa">
+  <h1>Criar conta</h1>
+  <% if (erro) { %><p class="erro" role="alert"><%= erro %></p><% } %>
+  <form action="/cadastro" method="POST" class="auth-form" data-validar="cadastro" novalidate>
+    <label for="nome">Nome</label>
+    <input id="nome" name="nome" type="text" value="<%= valores.nome || '' %>" required maxlength="80" autocomplete="name" aria-describedby="erro-nome" <%- erros.nome ? 'aria-invalid="true"' : '' %>>
+    <small class="campo-erro" id="erro-nome" aria-live="polite"><%= erros.nome || '' %></small>
+
+    <label for="email">E-mail</label>
+    <input id="email" name="email" type="email" value="<%= valores.email || '' %>" required maxlength="120" autocomplete="email" aria-describedby="erro-email" <%- erros.email ? 'aria-invalid="true"' : '' %>>
+    <small class="campo-erro" id="erro-email" aria-live="polite"><%= erros.email || '' %></small>
+
+    <label for="senha">Senha (mínimo 8 caracteres, com letras e números)</label>
+    <input id="senha" name="senha" type="password" minlength="8" maxlength="72" required autocomplete="new-password" aria-describedby="erro-senha" <%- erros.senha ? 'aria-invalid="true"' : '' %>>
+    <small class="campo-erro" id="erro-senha" aria-live="polite"><%= erros.senha || '' %></small>
+
+    <label for="confirmacao">Confirmar senha</label>
+    <input id="confirmacao" name="confirmacao" type="password" maxlength="72" required autocomplete="new-password" aria-describedby="erro-confirmacao" <%- erros.confirmacao ? 'aria-invalid="true"' : '' %>>
+    <small class="campo-erro" id="erro-confirmacao" aria-live="polite"><%= erros.confirmacao || '' %></small>
+    <label class="checkbox"><input type="checkbox" data-mostrar-senha="senha,confirmacao"> Mostrar senhas</label>
+
+    <button class="botao botao-principal" type="submit">Cadastrar</button>
+  </form>
+  <p>Já tem conta? <a href="/login">Entrar</a></p>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/auth.js"></script>
+<script src="/js/validacao.js"></script>
+<%- include('../partials/fim') %>

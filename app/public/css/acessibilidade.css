@@ -1,0 +1,343 @@
+/* ============================================================
+   acessibilidade.css - Painel de acessibilidade e modos especiais
+   Carrega DEPOIS do home.css para poder sobrescrever o tema.
+   ============================================================ */
+
+/* ---------- Painel (base: celular, abre como folha vinda de baixo) ---------- */
+.acess-painel {
+    width: 100%;
+    max-width: none;
+    max-height: 90vh;
+    margin: auto 0 0;
+    padding: 0;
+    border: 1px solid var(--borda);
+    border-radius: 28px 28px 0 0;
+    background: var(--superficie);
+    color: var(--texto);
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+.acess-painel[open] {
+    animation: subir 0.4s var(--curva);
+}
+
+.acess-painel::backdrop {
+    background: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(3px);
+}
+
+.acess-form {
+    padding: 8px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+}
+
+.acess-topo {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0 12px;
+    background: var(--superficie);
+}
+
+.acess-topo h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.acess-grupo {
+    margin: 0 0 18px;
+    padding: 0;
+    border: 0;
+}
+
+.acess-grupo legend,
+.acess-grupo h3 {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--verde);
+}
+
+.acess-grade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.acess-opcao {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 64px;
+    padding: 12px;
+    border: 2px solid var(--borda);
+    border-radius: 16px;
+    background: var(--fundo-suave);
+    color: var(--texto);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.25s var(--curva), background 0.25s ease, border-color 0.25s ease;
+}
+
+.acess-opcao:hover {
+    transform: translateY(-2px);
+    border-color: var(--verde);
+}
+
+.acess-opcao:active {
+    transform: scale(0.96);
+}
+
+/* Opção ligada: cor + marca de "check" (não depende só da cor) */
+.acess-opcao[aria-pressed="true"] {
+    border-color: var(--verde);
+    background: var(--verde-claro);
+}
+
+.acess-opcao[aria-pressed="true"]::after {
+    content: "✓";
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    color: var(--verde);
+    font-weight: 800;
+}
+
+.acess-nota {
+    margin: 10px 0 0;
+    color: var(--texto-secundario);
+    font-size: 0.82rem;
+}
+
+.acess-atalhos {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 14px;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.acess-atalhos dt {
+    font-weight: 700;
+}
+
+.acess-atalhos dd {
+    margin: 0;
+    color: var(--texto-secundario);
+}
+
+.acess-rodape {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* ---------- Tablet / computador: painel centralizado ---------- */
+@media (min-width: 768px) {
+    .acess-painel {
+        width: 560px;
+        margin: auto;
+        border-radius: 28px;
+    }
+
+    .acess-grade {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================================
+   MODOS ATIVADOS PELO PAINEL (classes no <html>)
+   ============================================================ */
+
+/* ---------- Alto contraste: fundo preto, texto branco, destaque amarelo ---------- */
+:root.acess-contraste {
+    --verde: #FFE600;
+    --verde-escuro: #FFE600;
+    --verde-claro: #1F1F1F;
+    --gradiente: #FFE600;
+    --fundo: #000000;
+    --fundo-suave: #000000;
+    --superficie: #000000;
+    --texto: #FFFFFF;
+    --texto-secundario: #FFFFFF;
+    --borda: #FFFFFF;
+    --vidro: #000000;
+    --sombra: none;
+    --sombra-forte: none;
+}
+
+:root.acess-contraste a {
+    color: #FFE600;
+    text-decoration: underline;
+}
+
+:root.acess-contraste .botao-principal,
+:root.acess-contraste .selo {
+    color: #000000 !important;
+    border-color: #FFFFFF;
+}
+
+:root.acess-contraste .botao-escuro {
+    background: #FFFFFF;
+    color: #000000 !important;
+}
+
+:root.acess-contraste .hero-blob {
+    display: none;
+}
+
+:root.acess-contraste .hero-visual {
+    border: 3px solid #FFFFFF;
+}
+
+:root.acess-contraste .hero-pilula {
+    background: #000000;
+    color: #FFE600;
+}
+
+:root.acess-contraste .faixa-escura {
+    background: #000000;
+    border: 2px solid #FFFFFF;
+}
+
+:root.acess-contraste .faixa-conteudo p,
+:root.acess-contraste .passo p {
+    color: #FFFFFF;
+}
+
+:root.acess-contraste .passo,
+:root.acess-contraste .card,
+:root.acess-contraste .remedio-card,
+:root.acess-contraste .oferta,
+:root.acess-contraste .categoria-tile {
+    border: 2px solid #FFFFFF;
+}
+
+:root.acess-contraste .passo-numero {
+    color: #FFE600;
+}
+
+:root.acess-contraste .remedio-imagem,
+:root.acess-contraste .oferta-melhor {
+    background: #1F1F1F;
+}
+
+:root.acess-contraste .erro {
+    background: #000000;
+    color: #FFFFFF;
+    border: 2px solid #FF6B6B;
+}
+
+:root.acess-contraste .campo-erro {
+    color: #FF9B9B;
+}
+
+:root.acess-contraste input[aria-invalid="true"],
+:root.acess-contraste textarea[aria-invalid="true"] {
+    border-color: #FF6B6B !important;
+}
+
+:root.acess-contraste :focus-visible {
+    outline: 4px solid #FFFFFF;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 8px #000000;
+}
+
+:root.acess-contraste .nav-inferior a.ativo,
+:root.acess-contraste .acess-opcao[aria-pressed="true"] {
+    background: #FFE600;
+    color: #000000;
+}
+
+:root.acess-contraste .nav-inferior a.ativo::before {
+    background: #000000;
+}
+
+/* ---------- Destacar links ---------- */
+:root.acess-links main a,
+:root.acess-links footer a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+    outline: 2px dashed var(--verde);
+    outline-offset: 2px;
+}
+
+/* ---------- Fonte para dislexia (Atkinson Hyperlegible) ---------- */
+:root.acess-dislexia body,
+:root.acess-dislexia button,
+:root.acess-dislexia input {
+    font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
+    letter-spacing: 0.03em;
+    word-spacing: 0.1em;
+}
+
+/* ---------- Espaçamento de texto (recomendação WCAG 1.4.12) ---------- */
+:root.acess-espacamento body {
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+    word-spacing: 0.16em;
+}
+
+:root.acess-espacamento p {
+    margin-bottom: 1.4em;
+}
+
+/* ---------- Cursor grande ---------- */
+:root.acess-cursor,
+:root.acess-cursor * {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'><path d='M4 2l15 9-6.5 1.6L9.5 19z' fill='black' stroke='white' stroke-width='1.6' stroke-linejoin='round'/></svg>") 4 2, auto !important;
+}
+
+/* ---------- Pausar animações (painel ou preferência do sistema) ---------- */
+:root.acess-sem-animacao *,
+:root.acess-sem-animacao *::before,
+:root.acess-sem-animacao *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+:root.acess-sem-animacao.js .revelar:not(.visivel) {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- VLibras: sobe o botão para não ficar atrás da barra inferior ---------- */
+[vw] {
+    z-index: 70;
+}
+
+[vw-access-button] {
+    margin-bottom: 90px;
+}

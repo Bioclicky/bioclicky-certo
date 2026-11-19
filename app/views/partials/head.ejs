@@ -1,0 +1,29 @@
+<%
+  // Mapa: qual CSS específico cada página carrega (além do home.css compartilhado)
+  const cssExtra = {
+    home: "remedios", remedios: "remedios", farmacias: "farmacias", categorias: "categorias",
+    sobre: "sobre", login: "auth", cadastro: "auth", dashboard: "dashboard", adm: "adm"
+  };
+%>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= titulo %> | BioClicky</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- CSS compartilhado (base mobile first) -->
+  <link rel="stylesheet" href="/css/home.css">
+  <% if (cssExtra[pagina]) { %>
+  <link rel="stylesheet" href="/css/<%= cssExtra[pagina] %>.css">
+  <% } %>
+  <!-- Navegação inferior e acessibilidade: carregam por último para poderem sobrescrever o tema -->
+  <link rel="stylesheet" href="/css/navegacao.css">
+  <link rel="stylesheet" href="/css/acessibilidade.css">
+  <!-- tema.js e acessibilidade.js ficam no head para aplicar as preferências salvas antes da página aparecer (evita "piscar") -->
+  <script src="/js/tema.js"></script>
+  <script src="/js/acessibilidade.js"></script>
+</head>
+<body>

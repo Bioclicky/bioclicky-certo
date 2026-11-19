@@ -1,0 +1,43 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="pagina-topo">
+  <h1>Farmácias</h1>
+  <p>Estabelecimentos com ofertas na plataforma. <span class="aviso-demo">Dados demonstrativos.</span></p>
+  <form class="busca" action="/farmacias" method="GET" role="search">
+    <label for="busca-farmacias" class="sr-only">Buscar farmácia pelo nome</label>
+    <input id="busca-farmacias" class="busca-campo" type="search" name="q" value="<%= q %>" placeholder="Nome da farmácia">
+    <button class="botao botao-principal" type="submit">Buscar</button>
+  </form>
+</section>
+
+<section class="secao">
+  <% if (farmacias.length === 0) { %>
+    <p class="vazio">Nenhuma farmácia encontrada.</p>
+  <% } else { %>
+  <ul class="grade-cards">
+    <% farmacias.forEach(function (f) { %>
+    <li>
+    <article class="card card-farmacia">
+      <%# Espaço do logo: se a farmácia tem "logo" no JSON mostra a imagem, senão mostra um "+".
+          Coloque o arquivo em app/public/imagens/farmacias/ e preencha o campo no painel do ADM. %>
+      <figure class="farmacia-logo">
+        <% if (f.logo) { %>
+          <img src="<%= f.logo %>" alt="Logotipo da <%= f.nome %>" loading="lazy">
+        <% } else { %>
+          <span class="farmacia-sem-logo" aria-hidden="true">+</span>
+        <% } %>
+      </figure>
+      <h2><%= f.nome %></h2>
+      <p><%= f.endereco ? f.endereco : 'Endereço não informado' %></p>
+      <p><%= f.totalOfertas %> oferta(s) na plataforma</p>
+      <a class="botao botao-contorno" href="/remedios?farmacia=<%= encodeURIComponent(f.nome) %>">Ver ofertas</a>
+    </article>
+    </li>
+    <% }); %>
+  </ul>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/fim') %>
