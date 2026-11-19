@@ -14,7 +14,8 @@ computador (`min-width: 1025px`) só acrescentam regras nas media queries.
 
 ## O que cada arquivo faz
 - `app.js` – configura Express, EJS, sessão e arquivos estáticos.
-- `app/routes/router.js` – todas as rotas e os dados enviados para cada página.
+- `app/routes/router.js` – rotas do site (públicas, login/cadastro, área do usuário), divididas em `publico.js`, `auth.js` e `usuario.js`.
+- `app/routes/router-adm.js` – rotas do ADM (`/adm`), divididas em `adm-remedios.js`, `adm-farmacias.js` e `adm-usuarios.js`.
 - `app/validators/validacoes.js` – validação do servidor com express-validator.
 - `app/public/js/validacao.js` – validação dos formulários no navegador.
 - `app/data/*.json` – medicamentos e farmácias (DEMONSTRATIVOS), usuários, favoritos e histórico.
@@ -32,13 +33,12 @@ computador (`min-width: 1025px`) só acrescentam regras nas media queries.
 ## Área do ADM
 - Entrada: faça login com um usuário do tipo `adm`. Ele vai direto para `/adm`.
 - O primeiro ADM é criado sozinho na primeira vez que o site roda (se não existir nenhum ADM):
-  e-mail `adm@bioclicky.com` e uma senha aleatória que aparece UMA vez no terminal.
-  (Opcional: defina as variáveis `ADMIN_EMAIL` e `ADMIN_PASSWORD` para escolher os seus dados.)
+  e-mail `adm@bioclicky.com` e senha `admin123` (definidos em `app/routes/acesso.js`).
 - `/adm` – painel com o total de remédios, farmácias e usuários.
 - `/adm/remedios` – cadastrar, editar e excluir remédios (com o preço de cada farmácia).
 - `/adm/farmacias` – cadastrar, editar e excluir farmácias (se mudar o nome, as ofertas acompanham).
 - `/adm/usuarios` – tornar usuário em ADM (ou o contrário) e excluir usuários.
-- A função `exigirAdm` (em `router.js`) bloqueia essas páginas para quem não é ADM.
+- A função `exigirAdm` (em `acesso.js`, usada no `router-adm.js`) bloqueia essas páginas para quem não é ADM.
 - Arquivos novos: `views/pages/adm*.ejs`, `public/css/adm.css`, `public/js/adm.js`.
 - Cada usuário tem o campo `tipo` (`"usuario"` ou `"adm"`) em `usuarios.json`.
 

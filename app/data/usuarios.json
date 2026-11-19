@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": 1795129424389,
+    "nome": "Administrador",
+    "email": "adm@bioclicky.com",
+    "senha": "admin123",
+    "tipo": "adm",
+    "favoritos": [],
+    "historico": []
+  }
+]

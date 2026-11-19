@@ -1,103 +1,56 @@
-// ============================================================
-// app.js - Arquivo principal. Configura o Express e inicia o servidor.
-// ============================================================
-
-// Lê o arquivo .env (se existir) e coloca as variáveis em process.env.
-// Em hospedagens (Render, Railway...) as variáveis são configuradas no painel do site,
-// então não existe .env e esse trecho simplesmente não faz nada.
-try {
-  process.loadEnvFile();
-} catch (e) {
-  // sem arquivo .env: tudo bem
-}
-
-const crypto = require("crypto");
 const express = require("express");
 const session = require("express-session");
-const path = require("path");
-const router = require("./app/routes/router");
-
 const app = express();
-const PORTA = process.env.PORT || 3000;
-const EM_PRODUCAO = process.env.NODE_ENV === "production";
+const porta = process.env.PORT || 3000; // 3000 no computador; o Render define a PORT sozinho
 
-// Segredo da sessão: vem do .env. Nunca fica escrito no código.
-let segredoSessao = process.env.SESSION_SECRET;
-if (!segredoSessao) {
-  if (EM_PRODUCAO) {
-    console.error("ERRO: defina a variável SESSION_SECRET antes de publicar o site.");
-    process.exit(1);
-  }
-  // Só para desenvolvimento: segredo aleatório (o login some quando o servidor reinicia)
-  segredoSessao = crypto.randomBytes(32).toString("hex");
-  console.warn("AVISO: SESSION_SECRET não definido; usando um segredo temporário (só para desenvolvimento).");
-}
+//indicação de pasta de arquivos estáticos - css, js, img
+app.use(express.static("./app/public"));
 
-// Atrás do proxy da hospedagem (HTTPS), o Express precisa confiar nele para o cookie "secure" funcionar
-if (EM_PRODUCAO) {
-  app.set("trust proxy", 1);
-}
-
-// Motor de templates EJS e pasta das views
+//configurar o ejs como mecanismo de renderização
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "app", "views"));
-app.disable("x-powered-by"); // não conta para todo mundo que usamos Express
+//configurar a pasta das views - html->ejs
+app.set("views", "./app/views");
 
-// Cabeçalhos simples de segurança
-app.use((req, res, next) => {
-  res.setHeader("X-Content-Type-Options", "nosniff");
-  res.setHeader("X-Frame-Options", "SAMEORIGIN");
-  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
-  next();
-});
+//SEMPRE ANTES DA REQUISIÇÃO DAS ROTAS
+//configurar o payload para formato JSON (API)
+app.use(express.json());
+//configurar o payload para formato URLencoded - (form html -> array, objeto, json)
+app.use(express.urlencoded({ extended: true }));
 
-// Arquivos estáticos (css, js, imagens) servidos a partir de app/public
-app.use(express.static(path.join(__dirname, "app", "public")));
-
-// Lê dados de formulários (login, cadastro, administração)
-app.use(express.urlencoded({ extended: true, limit: "50kb" }));
-
-// Sessão: guarda quem está logado
+//sessão: guarda quem está logado (login, favoritos e área do ADM dependem disso)
 app.use(
   session({
     name: "bioclicky.sid",
-    secret: segredoSessao,
+    secret: "bioclicky-segredo-do-tcc",
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true, // JavaScript da página não consegue ler o cookie (protege contra XSS)
-      sameSite: "lax", // o cookie não vai em POST vindo de outros sites (protege contra CSRF)
-      secure: "auto", // só HTTPS quando o site está em HTTPS
-      maxAge: 1000 * 60 * 60 * 2 // 2 horas
-    }
+    saveUninitialized: false
   })
 );
 
-// Deixa o usuário logado e a lista de erros de formulário disponíveis em todos os EJS
+//deixa o usuário logado e a lista de erros disponíveis em todas as páginas (EJS)
 app.use((req, res, next) => {
   res.locals.usuario = req.session.usuario || null;
-  res.locals.erros = {}; // erros por campo; as rotas com formulário trocam por erros reais
+  res.locals.erros = {};
   next();
 });
 
-app.use("/", router);
+//requisitar arquivos de rotas
+const rota = require("./app/routes/router");
+const rotaAdm = require("./app/routes/router-adm");
+// indicar o local de uso das rotas
+app.use("/", rota);
+// ("/") indica a raiz do site
+// http://localhost:3000
+app.use("/adm", rotaAdm);
+// ("/adm") indica acesso ao site pela pasta adm
+// http://localhost:3000/adm
 
-// Página 404
+//página 404 (nenhuma rota encontrada)
 app.use((req, res) => {
   res.status(404).render("pages/erro", { titulo: "Página não encontrada", pagina: "" });
 });
 
-// Erros inesperados: o detalhe vai só para o terminal, nunca para o visitante
-app.use((err, req, res, next) => {
-  console.error(err);
-  if (res.headersSent) {
-    return next(err);
-  }
-  res
-    .status(500)
-    .render("pages/erro", { titulo: "Algo deu errado. Tente novamente em instantes.", pagina: "" });
-});
-
-app.listen(PORTA, () => {
-  console.log("BioClicky rodando na porta " + PORTA);
+//iniciar o servidor
+app.listen(porta, () => {
+  console.log(`Servidor on-line \nhttp://localhost:${porta}`);
 });

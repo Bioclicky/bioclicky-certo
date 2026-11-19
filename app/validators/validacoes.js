@@ -47,7 +47,7 @@ const validarCadastro = [
 ];
 
 // ---------- Login ----------
-// No login só conferimos o formato; quem diz se a senha está certa é o bcrypt na rota.
+// No login só conferimos o formato; quem confere se a senha está certa é a rota.
 const validarLogin = [
   body("email")
     .trim()

@@ -1,5 +1,6 @@
 [
-  { "id": 1, "nome": "Farmácia Exemplo A", "endereco": null, "logo": null },
-  { "id": 2, "nome": "Farmácia Exemplo B", "endereco": null, "logo": null },
-  { "id": 3, "nome": "Farmácia Exemplo C", "endereco": null, "logo": null }
+  { "id": 1, "nome": "Drogasil", "endereco": null, "logo": null },
+  { "id": 2, "nome": "DrogaRaia", "endereco": null, "logo": null },
+  { "id": 3, "nome": "PagueMenos", "endereco": null, "logo": null },
+  { "id": 4, "nome": "Drogaria São Paulo", "endereco": null, "logo": null }
 ]
