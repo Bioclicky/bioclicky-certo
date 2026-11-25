@@ -5,7 +5,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Analgésicos",
     "descricao": "Analgésico e antitérmico. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/dipirona500mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
