@@ -357,7 +357,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Antibióticos",
     "descricao": "Antibiótico. Venda somente com receita médica. Dado demonstrativo.",
-    "imagem": "/imagens/remedios/Azitromicina500mg.png",
+    "imagem": "/imagens/remedios/azitromicina.png",
     "ofertas": [
       {
         "farmacia": "DrogaRaia",
