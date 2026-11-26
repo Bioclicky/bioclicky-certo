@@ -27,7 +27,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Analgésicos",
     "descricao": "Analgésico e antitérmico. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/paracetamol750mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -45,7 +45,7 @@
     "laboratorio": "Laboratório Modelo",
     "categoria": "Anti-inflamatórios",
     "descricao": "Anti-inflamatório não esteroide. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/ibuprofeno400mg.png",
     "ofertas": [
       {
         "farmacia": "DrogaRaia",
@@ -63,7 +63,7 @@
     "laboratorio": "Laboratório Modelo",
     "categoria": "Gastrointestinais",
     "descricao": "Redutor de acidez gástrica. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/omeprazol20mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -81,7 +81,7 @@
     "laboratorio": "Laboratório Teste",
     "categoria": "Antialérgicos",
     "descricao": "Antialérgico. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/loratadina.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -95,7 +95,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Analgésicos",
     "descricao": "Analgésico e relaxante muscular. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/dorflex36comprimidos.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -117,7 +117,7 @@
     "laboratorio": "Laboratório Modelo",
     "categoria": "Analgésicos",
     "descricao": "Analgésico para dores de cabeça. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/neosaldina.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -135,7 +135,7 @@
     "laboratorio": "Laboratório Teste",
     "categoria": "Anti-inflamatórios",
     "descricao": "Anti-inflamatório para dores e inflamações. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/diclofenaco50mg.png",
     "ofertas": [
       {
         "farmacia": "DrogaRaia",
@@ -157,7 +157,7 @@
     "laboratorio": "Laboratório Modelo",
     "categoria": "Anti-inflamatórios",
     "descricao": "Anti-inflamatório e analgésico. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/nimesulida100mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -175,7 +175,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Gastrointestinais",
     "descricao": "Protetor gástrico. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/pantoprazol40mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -197,7 +197,7 @@
     "laboratorio": "Laboratório Teste",
     "categoria": "Gastrointestinais",
     "descricao": "Alívio de gases intestinais. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/simeticona40mg.png",
     "ofertas": [
       {
         "farmacia": "DrogaRaia",
@@ -215,7 +215,7 @@
     "laboratorio": "Laboratório Modelo",
     "categoria": "Antialérgicos",
     "descricao": "Antialérgico de uso diário. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/deslorotadina5mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -233,7 +233,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Antialérgicos",
     "descricao": "Antialérgico para rinite e urticária. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/cetirizina10mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -255,7 +255,7 @@
     "laboratorio": "Laboratório Teste",
     "categoria": "Coração e pressão",
     "descricao": "Anti-hipertensivo de uso contínuo. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/losartanapotassica50mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -277,7 +277,7 @@
     "laboratorio": "Laboratório Modelo",
     "categoria": "Coração e pressão",
     "descricao": "Anti-hipertensivo. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/atenolol.png",
     "ofertas": [
       {
         "farmacia": "DrogaRaia",
@@ -295,7 +295,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Vitaminas",
     "descricao": "Suplemento de vitamina D. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/vtaminad3-2000ui.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -317,7 +317,7 @@
     "laboratorio": "Laboratório Teste",
     "categoria": "Vitaminas",
     "descricao": "Suplemento de vitamina C. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/vitaminaC-1g.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -335,7 +335,7 @@
     "laboratorio": "Laboratório Modelo",
     "categoria": "Antibióticos",
     "descricao": "Antibiótico. Venda somente com receita médica. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/amoxicilina500mg.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
@@ -357,7 +357,7 @@
     "laboratorio": "Laboratório Exemplo",
     "categoria": "Antibióticos",
     "descricao": "Antibiótico. Venda somente com receita médica. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/azitromicina500mg.png",
     "ofertas": [
       {
         "farmacia": "DrogaRaia",
@@ -375,7 +375,7 @@
     "laboratorio": "Laboratório Teste",
     "categoria": "Primeiros socorros",
     "descricao": "Solução para higiene e limpeza. Dado demonstrativo.",
-    "imagem": null,
+    "imagem": "/imagens/remedios/sorofisiologico.png",
     "ofertas": [
       {
         "farmacia": "Drogasil",
